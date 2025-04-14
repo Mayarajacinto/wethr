@@ -1,0 +1,78 @@
+{
+    "New York": {
+        "2025-02-01": {
+            "temperature": 18.20353016702149,
+            "humidity": 27,
+            "wind_speed": 19.316147836343784,
+            "condition": "Cloudy"
+        }
+    },
+    "Maceió": {
+        "2025-02-01": {
+            "temperature": 23.052526158266602,
+            "humidity": 46,
+            "wind_speed": 18.966587039069648,
+            "condition": "Rainy"
+        },
+        "2025-02-01T04:11:41.046342": {
+            "temperature": 22.69,
+            "humidity": 68,
+            "wind_speed": 19.19,
+            "condition": "Cloudy"
+        },
+        "2025-02-01T04:18:08.835077": {
+            "temperature": 21.93,
+            "humidity": 88,
+            "wind_speed": 15.65,
+            "condition": "Windy"
+        },
+        "2025-02-01T04:18:45.093082": {
+            "temperature": 22.73,
+            "humidity": 56,
+            "wind_speed": 16.66,
+            "condition": "Rainy"
+        },
+        "2025-02-01T04:20:53.251011": {
+            "temperature": -3.19,
+            "humidity": 36,
+            "wind_speed": 9.53,
+            "condition": "Cloudy"
+        },
+        "2025-02-01T04:23:30.874605": {
+            "temperature": 26.81,
+            "humidity": 40,
+            "wind_speed": 8.1,
+            "condition": "Windy"
+        },
+        "2025-02-01T04:31:35.016142": {
+            "temperature": 27.36,
+            "humidity": 36,
+            "wind_speed": 9.31,
+            "condition": "Snowy"
+        },
+        "2025-02-01T04:34:14.993020": {
+            "temperature": 29.22,
+            "humidity": 80,
+            "wind_speed": 14.99,
+            "condition": "Rainy"
+        },
+        "2025-02-01T04:34:27.195739": {
+            "temperature": -5.24,
+            "humidity": 26,
+            "wind_speed": 17.98,
+            "condition": "Windy"
+        },
+        "2025-02-01T04:35:21.052949": {
+            "temperature": 11.81,
+            "humidity": 86,
+            "wind_speed": 19.84,
+            "condition": "Snowy"
+        },
+        "2025-02-01T04:38:54.033511": {
+            "temperature": 9.14,
+            "humidity": 33,
+            "wind_speed": 15.54,
+            "condition": "Cloudy"
+        }
+    }
+}
