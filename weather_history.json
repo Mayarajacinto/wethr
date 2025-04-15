@@ -1,4 +1,4 @@
-{
+{ 
     "New York": {
         "2025-02-01": {
             "temperature": 18.20353016702149,
@@ -72,6 +72,26 @@
             "temperature": 9.14,
             "humidity": 33,
             "wind_speed": 15.54,
+            "condition": "Cloudy"
+        },
+        "2025-04-15T07:18:34.967772": {
+            "temperature": 32.6,
+            "humidity": 77,
+            "wind_speed": 18.0,
+            "condition": "Sunny"
+        },
+        "2025-04-15T07:19:09.593161": {
+            "temperature": -6.4,
+            "humidity": 35,
+            "wind_speed": 8.35,
+            "condition": "Sunny"
+        }
+    },
+    "Juazeiro do Norte": {
+        "2025-04-15T07:18:00.713832": {
+            "temperature": -4.34,
+            "humidity": 36,
+            "wind_speed": 17.48,
             "condition": "Cloudy"
         }
     }

@@ -4,6 +4,7 @@ import json
 import os
 from typing import Dict, Any, Optional
 
+
 class WeatherService:
     """
     Base class for all weather-related services implementing the Singleton pattern.
@@ -53,6 +54,7 @@ class WeatherService:
         }
         return translations.get(language, translations["english"]).get(key, key)
 
+# gera dados meteorologicos laeatorios 
 class WeatherDataCollector(WeatherService):
     def collect_data(self, location: str) -> Dict[str, Any]:
         """Collect weather data for a specific location"""
@@ -65,6 +67,7 @@ class WeatherDataCollector(WeatherService):
         #print(f"[{self.service_name}] {self.get_translation(self._language, 'data_collected')} {location}: {weather_data}")
         return weather_data
 
+#cria pevisões baseadas nos dados 
 class WeatherForecaster(WeatherService):
     def generate_forecast(self, current_weather: Dict[str, Any]) -> Dict[str, str]:
         """Generate weather forecast based on current conditions"""
@@ -86,6 +89,7 @@ class WeatherForecaster(WeatherService):
     def _predict_long_term(self, current_weather: Dict[str, Any]) -> str:
         return "Warming Trend"
 
+#verifica se deve emitir alertas 
 class WeatherAlertSystem(WeatherService):
     def check_for_alerts(self, weather_data: Dict[str, Any]) -> str:
         """Check weather conditions and issue alerts if necessary"""
@@ -102,6 +106,7 @@ class WeatherAlertSystem(WeatherService):
                 weather_data["temperature"] > 35 or 
                 weather_data["temperature"] < -5)
 
+# salva e carrega histprico de tempo em .json
 class HistoricalWeatherData(WeatherService):
     def _initialize(self, language: str, location: str) -> None:
         """Initialize historical data storage"""
@@ -142,6 +147,7 @@ class HistoricalWeatherData(WeatherService):
         location = location or self._location
         return self.history.get(location, {})
 
+#analisa tendencias climáticas com base nos dados históricos
 class ClimateAnalytics(WeatherService):
     def analyze_trends(self, location: Optional[str] = None) -> Dict[str, Any]:
         """Analyze climate trends for a location"""
@@ -156,6 +162,7 @@ class ClimateAnalytics(WeatherService):
         #print(f"[{self.service_name}] {self.get_translation(self._language, 'climate_trend')}: {trend_analysis}")
         return trend_analysis
 
+#conecta todos esses serviços e retorna um resumo 
 class WeatherForecastingSystem:
     """Main system that coordinates all weather services"""
     def __init__(self, location: str, language: str = "english"):

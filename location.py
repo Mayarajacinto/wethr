@@ -12,6 +12,7 @@ class Location:
             cls._instance.set_location()
         return cls._instance
     
+    #uso da API ipinfo para pegar a localização do usuário
     def set_location(self):
         response = requests.get("https://ipinfo.io/json")
         self._location = response.json()

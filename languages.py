@@ -114,7 +114,11 @@ _languages = {
     }
 }
 
+# funciona como um dicionário 
+# singleton aplicado aqui, porque garante que apenas uma configuração de idioma seja usada 
+# durante toda execução do programa 
 class Language:
+    #atributo da classe, guarda a instancia unica 
     _instance = None
     _language = None
     _dictionary = None

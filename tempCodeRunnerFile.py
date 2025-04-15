@@ -1,0 +1,1 @@
+Initialize the Wethr application with language and location services
