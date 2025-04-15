@@ -16,6 +16,7 @@ from typing import Dict, Any, Optional
 import weather
 import languages as lang
 import location
+from weather import DefaultWeatherServiceFactory
 
 class WethrApp:
     """Main application class for the Wethr system"""
@@ -96,10 +97,9 @@ class WethrApp:
             print(f"{self.dictionary['chosen_place']} [ {city} ]")
             
             # Initialize weather system with chosen location
-            self.weather_system = weather.WeatherForecastingSystem(
-                location=city,
-                language=self.language
-            )
+            # alteração 
+            factory = DefaultWeatherServiceFactory(language=self.language, location=city)
+            self.weather_system = weather.WeatherForecastingSystem(factory)
             
             # Get and display weather update
             weather_update = self.weather_system.get_weather_update()

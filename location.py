@@ -1,5 +1,6 @@
 import requests
 
+# singleton aplicado 
 class Location:
     
     #private

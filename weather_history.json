@@ -1,4 +1,4 @@
-{ 
+{
     "New York": {
         "2025-02-01": {
             "temperature": 18.20353016702149,
@@ -93,6 +93,22 @@
             "humidity": 36,
             "wind_speed": 17.48,
             "condition": "Cloudy"
+        }
+    },
+    " Acre": {
+        "2025-04-15T09:36:44.298888": {
+            "temperature": 11.07,
+            "humidity": 74,
+            "wind_speed": 1.06,
+            "condition": "Snowy"
+        }
+    },
+    " Brasilia ": {
+        "2025-04-15T09:49:40.186728": {
+            "temperature": 14.35,
+            "humidity": 42,
+            "wind_speed": 16.86,
+            "condition": "Windy"
         }
     }
 }

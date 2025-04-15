@@ -4,7 +4,6 @@ import json
 import os
 from typing import Dict, Any, Optional
 
-
 class WeatherService:
     """
     Base class for all weather-related services implementing the Singleton pattern.
@@ -163,18 +162,20 @@ class ClimateAnalytics(WeatherService):
         return trend_analysis
 
 #conecta todos esses serviços e retorna um resumo 
+# adiconado o metodo Abstract factory 
+# Antes, a classe criando instancias de classes especificas diretamente, e seria mais complicado atualizar o sistema no futuro
+# Agora, com a fabrica, a criação dos objetos é centralizada, facilitando a manutenção e a extensibilidade do código.
 class WeatherForecastingSystem:
-    """Main system that coordinates all weather services"""
-    def __init__(self, location: str, language: str = "english"):
-        self.location = location
-        self.language = language
+    def __init__(self, factory: "WeatherServiceFactory"):
+        self.weather_collector = factory.create_collector()
+        self.forecaster = factory.create_forecaster()
+        self.alert_system = factory.create_alert_system()
+        self.historical_data = factory.create_historical_data()
+        self.analytics = factory.create_analytics()
         
-        # Initialize all services
-        self.weather_collector = WeatherDataCollector(language, location)
-        self.forecaster = WeatherForecaster(language, location)
-        self.alert_system = WeatherAlertSystem(language, location)
-        self.historical_data = HistoricalWeatherData(language, location)
-        self.analytics = ClimateAnalytics(language, location)
+        self.location = self.weather_collector._location
+        self.language = self.weather_collector._language
+
 
     def get_weather_update(self) -> Dict[str, Any]:
         """Get comprehensive weather update for the current location"""
@@ -192,3 +193,32 @@ class WeatherForecastingSystem:
             "alerts": alert,
             "climate_trends": trends
         }
+
+class WeatherServiceFactory:
+    def create_collector(self): pass
+    def create_forecaster(self): pass
+    def create_alert_system(self): pass
+    def create_historical_data(self): pass
+    def create_analytics(self): pass
+
+# abstract factory
+# cria familias de objetos relacionados sem acoplamento direto 
+class DefaultWeatherServiceFactory(WeatherServiceFactory):
+    def __init__(self, language: str, location: str):
+        self.language = language
+        self.location = location
+
+    def create_collector(self):
+        return WeatherDataCollector(self.language, self.location)
+
+    def create_forecaster(self):
+        return WeatherForecaster(self.language, self.location)
+
+    def create_alert_system(self):
+        return WeatherAlertSystem(self.language, self.location)
+
+    def create_historical_data(self):
+        return HistoricalWeatherData(self.language, self.location)
+
+    def create_analytics(self):
+        return ClimateAnalytics(self.language, self.location)
