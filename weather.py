@@ -161,7 +161,7 @@ class ClimateAnalytics(WeatherService):
 
 #conecta todos esses serviços e retorna um resumo 
 # adiconado o metodo Abstract factory 
-# Antes, a classe criando instancias de classes especificas diretamente, e seria mais complicado atualizar o sistema no futuro
+# Antes, a classe estava criando instancias de classes especificas diretamente, e seria mais complicado atualizar o sistema no futuro
 # Agora, com a fabrica, a criação dos objetos é centralizada, facilitando a manutenção e a extensibilidade do código.
 class WeatherForecastingSystem:
     def __init__(self, factory: "WeatherServiceFactory"):
@@ -242,4 +242,6 @@ class WeatherFacade:
     def get_climate_trends(self) -> Dict[str, Any]:
         """tendências climáticas."""
         return self.forecasting_system.analytics.analyze_trends()
-    
+
+
+

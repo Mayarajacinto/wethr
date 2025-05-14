@@ -135,6 +135,36 @@
             "humidity": 46,
             "wind_speed": 3.62,
             "condition": "Rainy"
+        },
+        "2025-05-14T10:24:00.350751": {
+            "temperature": 38.85,
+            "humidity": 62,
+            "wind_speed": 4.65,
+            "condition": "Sunny"
+        },
+        "2025-05-14T10:25:46.381683": {
+            "temperature": 16.97,
+            "humidity": 80,
+            "wind_speed": 4.77,
+            "condition": "Snowy"
+        },
+        "2025-05-14T10:36:36.117308": {
+            "temperature": 31.72,
+            "humidity": 79,
+            "wind_speed": 2.48,
+            "condition": "Sunny"
+        },
+        "2025-05-14T10:38:17.197425": {
+            "temperature": 9.35,
+            "humidity": 86,
+            "wind_speed": 1.28,
+            "condition": "Cloudy"
+        },
+        "2025-05-14T10:38:32.805087": {
+            "temperature": 23.44,
+            "humidity": 61,
+            "wind_speed": 1.57,
+            "condition": "Snowy"
         }
     },
     " Acre": {
@@ -174,6 +204,46 @@
             "temperature": 36.73,
             "humidity": 86,
             "wind_speed": 5.15,
+            "condition": "Windy"
+        }
+    },
+    "Sergipe ": {
+        "2025-05-14T10:25:31.799118": {
+            "temperature": 24.72,
+            "humidity": 34,
+            "wind_speed": 5.13,
+            "condition": "Snowy"
+        },
+        "2025-05-14T10:36:54.157611": {
+            "temperature": 19.8,
+            "humidity": 87,
+            "wind_speed": 10.36,
+            "condition": "Sunny"
+        },
+        "2025-05-14T10:37:48.264217": {
+            "temperature": -6.91,
+            "humidity": 77,
+            "wind_speed": 18.23,
+            "condition": "Snowy"
+        }
+    },
+    "Sergipe": {
+        "2025-05-14T10:36:06.901655": {
+            "temperature": 17.2,
+            "humidity": 47,
+            "wind_speed": 14.61,
+            "condition": "Snowy"
+        },
+        "2025-05-14T10:36:19.015004": {
+            "temperature": 31.43,
+            "humidity": 31,
+            "wind_speed": 15.22,
+            "condition": "Rainy"
+        },
+        "2025-05-14T10:38:05.992116": {
+            "temperature": -7.27,
+            "humidity": 90,
+            "wind_speed": 0.63,
             "condition": "Windy"
         }
     }
