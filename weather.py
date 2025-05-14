@@ -159,10 +159,7 @@ class ClimateAnalytics(WeatherService):
         #print(f"[{self.service_name}] {self.get_translation(self._language, 'climate_trend')}: {trend_analysis}")
         return trend_analysis
 
-#conecta todos esses serviços e retorna um resumo 
-# adiconado o metodo Abstract factory 
-# Antes, a classe estava criando instancias de classes especificas diretamente, e seria mais complicado atualizar o sistema no futuro
-# Agora, com a fabrica, a criação dos objetos é centralizada, facilitando a manutenção e a extensibilidade do código.
+#adiconado o metodo Abstract factory 
 class WeatherForecastingSystem:
     def __init__(self, factory: "WeatherServiceFactory"):
         self.weather_collector = factory.create_collector()
@@ -199,9 +196,9 @@ class WeatherServiceFactory:
     def create_historical_data(self): pass
     def create_analytics(self): pass
 
-#criacional adicionado aq
-# abstract factory
-# cria familias de objetos relacionados sem acoplamento direto 
+#abstract factory
+#cria familias de objetos relacionados sem acoplamento direto 
+#para desconectar a criação dos serviços e facilitar atualizações no futuro 
 class DefaultWeatherServiceFactory(WeatherServiceFactory):
     def __init__(self, language: str, location: str):
         self.language = language
@@ -224,6 +221,7 @@ class DefaultWeatherServiceFactory(WeatherServiceFactory):
 
 #metodo estrutural adicionado 
 #Facade 
+#usada para centralizar e simplificar o acesso aos serviços 
 class WeatherFacade:
     """Facade para simplificar o acesso aos serviços de previsão do tempo."""
     
