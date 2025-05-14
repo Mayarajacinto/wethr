@@ -92,23 +92,20 @@ class WethrApp:
     def run(self) -> None:
         """Main application loop"""
         try:
-            # Get user's preferred location
             city = self.get_user_location()
             print(f"{self.dictionary['chosen_place']} [ {city} ]")
             
-            # Initialize weather system with chosen location
-            # alteração 
             factory = DefaultWeatherServiceFactory(language=self.language, location=city)
             self.weather_system = weather.WeatherForecastingSystem(factory)
             
-            # Get and display weather update
-            weather_update = self.weather_system.get_weather_update()
+            weather_facade = weather.WeatherFacade(language=self.language, location=city)
+            weather_update = weather_facade.get_weather_update()
+            
             self.display_weather_info(weather_update)
             
-            # Collect user feedback
             feedback = self.get_weather_feedback()
-            if feedback and hasattr(self.weather_system, 'feedback_system'):
-                self.weather_system.feedback_system.submit_report(city, feedback)
+            if feedback and hasattr(weather_facade.forecasting_system, 'feedback_system'):
+                weather_facade.forecasting_system.feedback_system.submit_report(city, feedback)
                 
         except Exception as e:
             print(f"An error occurred: {str(e)}")

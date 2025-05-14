@@ -3,6 +3,7 @@ import datetime
 import json
 import os
 from typing import Dict, Any, Optional
+from abc import ABC, abstractmethod
 
 class WeatherService:
     """
@@ -69,17 +70,14 @@ class WeatherDataCollector(WeatherService):
 #cria pevisões baseadas nos dados 
 class WeatherForecaster(WeatherService):
     def generate_forecast(self, current_weather: Dict[str, Any]) -> Dict[str, str]:
-        """Generate weather forecast based on current conditions"""
-        forecast = {
+        """Geração direta da previsão (sem estratégia)"""
+        return {
             "tomorrow": self._predict_next_day(current_weather),
             "week_ahead": self._predict_week_ahead(current_weather),
             "long_term": self._predict_long_term(current_weather)
         }
-        #print(f"[{self.service_name}] {self.get_translation(self._language, 'forecast_generated')}: {forecast}")
-        return forecast
     
     def _predict_next_day(self, current_weather: Dict[str, Any]) -> str:
-        # Simple prediction logic based on current conditions
         return "Sunny" if current_weather["temperature"] > 20 else "Cloudy"
     
     def _predict_week_ahead(self, current_weather: Dict[str, Any]) -> str:
@@ -201,13 +199,14 @@ class WeatherServiceFactory:
     def create_historical_data(self): pass
     def create_analytics(self): pass
 
+#criacional adicionado aq
 # abstract factory
 # cria familias de objetos relacionados sem acoplamento direto 
 class DefaultWeatherServiceFactory(WeatherServiceFactory):
     def __init__(self, language: str, location: str):
         self.language = language
         self.location = location
-
+        
     def create_collector(self):
         return WeatherDataCollector(self.language, self.location)
 
@@ -222,3 +221,25 @@ class DefaultWeatherServiceFactory(WeatherServiceFactory):
 
     def create_analytics(self):
         return ClimateAnalytics(self.language, self.location)
+
+#metodo estrutural adicionado 
+#Facade 
+class WeatherFacade:
+    """Facade para simplificar o acesso aos serviços de previsão do tempo."""
+    
+    def __init__(self, language: str = "english", location: str = "Washington DC"):
+        self.factory = DefaultWeatherServiceFactory(language, location)
+        self.forecasting_system = WeatherForecastingSystem(self.factory)
+    
+    def get_weather_update(self) -> Dict[str, Any]:
+        """informações meteorológicas."""
+        return self.forecasting_system.get_weather_update()
+    
+    def get_historical_data(self) -> Dict[str, Any]:
+        """dados históricos."""
+        return self.forecasting_system.historical_data.get_weather_history()
+    
+    def get_climate_trends(self) -> Dict[str, Any]:
+        """tendências climáticas."""
+        return self.forecasting_system.analytics.analyze_trends()
+    
