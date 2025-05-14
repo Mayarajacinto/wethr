@@ -223,22 +223,18 @@ class DefaultWeatherServiceFactory(WeatherServiceFactory):
 #Facade 
 #usada para centralizar e simplificar o acesso aos serviços 
 class WeatherFacade:
-    """Facade para simplificar o acesso aos serviços de previsão do tempo."""
     
     def __init__(self, language: str = "english", location: str = "Washington DC"):
         self.factory = DefaultWeatherServiceFactory(language, location)
         self.forecasting_system = WeatherForecastingSystem(self.factory)
     
     def get_weather_update(self) -> Dict[str, Any]:
-        """informações meteorológicas."""
         return self.forecasting_system.get_weather_update()
     
     def get_historical_data(self) -> Dict[str, Any]:
-        """dados históricos."""
         return self.forecasting_system.historical_data.get_weather_history()
     
     def get_climate_trends(self) -> Dict[str, Any]:
-        """tendências climáticas."""
         return self.forecasting_system.analytics.analyze_trends()
 
 
